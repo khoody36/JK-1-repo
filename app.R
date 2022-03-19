@@ -8,6 +8,7 @@ library(tibble)
 library(formattable)
 library(rsconnect)
 
+#WEB Module
 mwrWebUI <- function(id,label = "MWR Web"){
   
   ns <- NS(id)
@@ -25,7 +26,6 @@ mwrWebUI <- function(id,label = "MWR Web"){
   )
   
 }
-
 mwrWebServer <- function(id){
   
   moduleServer(
@@ -132,6 +132,7 @@ mwrWebServer <- function(id){
   
 }
 
+#EDI Module
 mwrEDIUI <- function(id,label = "MWR EDI"){
   
   ns <- NS(id)
@@ -149,7 +150,6 @@ mwrEDIUI <- function(id,label = "MWR EDI"){
   )
   
 }
-
 mwrEDIServer <- function(id){
   
   moduleServer(
@@ -252,6 +252,7 @@ mwrEDIServer <- function(id){
   
 }
 
+#Print Module
 mwrPrintUI <- function(id,label = "MWR Print"){
   
   ns <- NS(id)
@@ -269,7 +270,6 @@ mwrPrintUI <- function(id,label = "MWR Print"){
   )
   
 }
-
 mwrPrintServer <- function(id){
   
   moduleServer(
@@ -372,12 +372,12 @@ mwrPrintServer <- function(id){
   
 }
 
+#Shiny App
 ui <- fluidPage(
   selectInput("module", label = "Module Choices",
               choices = c("Web" = "mod1", "EDI" = "mod2", "Print" ="mod3")),
   uiOutput("ui")
 )
-
 server <- function(input, output, session) {
   
   output$ui <- renderUI({
